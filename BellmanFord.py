@@ -7,6 +7,7 @@ def bellman_Ford(graph, start):
 
     from_node = {i: None for i in graph}
 
+    '''
     # 정점의 개수 -1 만큼 반복함
     for _ in range(len(graph)-1):
         for current_node in graph:
@@ -21,7 +22,20 @@ def bellman_Ford(graph, start):
         for new_node, new_distance in graph[current_node]:
             if distances[new_node] > distances[current_node] + new_distance:
                 return -1
-    
+    '''
+
+    # 개선된 코드
+    N = len(graph)
+    for check in range(N):
+        for current_node in graph:
+            for new_node, new_distance in graph[current_node]:
+                distance = new_distance + distances[current_node]
+                if distances[new_node] > distance:
+                    if check == N-1: # 음수 사이클 판별
+                        return -1
+                    distances[new_node] = distance
+                    from_node[new_node] = current_node
+                    
     return distances, from_node
 
 def findPath(from_node, start, goal):

@@ -16,20 +16,21 @@
   <li>3번의 과정을 V-1번 반복한다.</li>
   <li>위 과정을 모두 마치고 난 후 거리가 갱신되는 경우가 생긴다면 그래프에 음수 사이클이 존재한다는 것이다.</li>
 </ol>
-
+<hr>
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile2.uf.tistory.com%2Fimage%2F9987253359DAD57120F171"><br>
 시작점이 1일 때, Dist[1]만 0으로 놓고 나머지는 무한대로 설정한다.
 
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F9947943359DAD5E5249EAC"> <br>
 시작점 1의 인접 정점들을 탐색하며, Dist[노드]에 저장되어 있는 값보다 정점 1을 거쳐 가는 값이 더 작을 경우 그 값으로 업데이트한다. 여기서는 모두 INF 무한대 값보다 작기 때문에 다 업데이트하게 된다.
 
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile9.uf.tistory.com%2Fimage%2F9941353359DAD6612E0F0B"> <br>
 정점 2의 인접 정점들을 탐색한다. 현재 정점(2)를 거쳐 정점 4로 가는 것이 정점 2를 거치지 않는 것보다 더 비용이 적게 들기 때문에 업데이트해준다.
 
-
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F996D4C3359DAD6E72F40BC">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile30.uf.tistory.com%2Fimage%2F993D073359DAD6FC371758">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile3.uf.tistory.com%2Fimage%2F99B1663359DAD70D270EFB">
 
 계속해서 V-1번이 될 때까지 반복해준다. 최종적으로 {0, -4, 5, -5, 1}이 나오게 된다.
 
-음수 사이클
+## 음수 사이클
 V-1번 반복이 끝난 이후, 한 번 더 위의 과정을 돌려주었을 때 값이 바뀐다면 음수 사이클이 있는 그래프임을 알 수 있다. (distance[a]에 저장되어 있는 값보다 현재 정점을 거쳐 가는 비용이 더 작다고 판별될 경우) 음수 사이클이 존재하는 경우에는 음수 가중치를 계속해서 더해주게 되어 최단 거리를 구할 수 없는 무한 루프에 빠지게 된다.
-
-벨만 포드 구현 코드(Python)
-
-
